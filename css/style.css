@@ -79,13 +79,6 @@ header h2 {
   color: #474747;
 } 
  
-#main h3:before {
-  content: "///";
-  color: #9ddcff;
-  padding-right: 0.3em;
-  margin-left: -2em;
-}
-
 
 #sidebar {
   float: left;

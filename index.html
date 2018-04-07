@@ -4,191 +4,50 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="google-site-verification" content="ozgnqb925nLPkhlk9qBcSvdsrY8xIZyrpnBOoDyY1hE" />
-    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet" type="text/css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" /> -->
     <link rel="stylesheet" type="text/css" href="css/sequence-diagram-min.css" media="screen" />
+    <title>Sequence Diagram</title>
+    <style>
+      html,body { height: 100%; margin: 0px; padding: 0px; }
 
-    <title>js-sequence-diagrams by bramp</title>
-    <link rel="canonical" href="https://bramp.github.io/js-sequence-diagrams/" />
+      .editor { 
+        width: 600px;
+        height: 100vh;
+        font-size: 14;
+      }
+      
+      .editor-wrapper {
+         width: 600px;
+         height: 100vh;
+         float: left;
+      }
 
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-36551491-1', 'auto');
-    ga('send', 'pageview');
-    </script>
+      .download {
+        padding-left: 10px;
+      }
+    </style>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>js-sequence-diagrams</h1>
-        <!--<h2>Draws simple UML sequence diagrams from a textual representation</h2>-->
-        <h2>Turns text into UML sequence diagrams</h2>
-        <!--
-        <a href="https://github.com/bramp/svg-js-sequence-diagrams" class="button">
-        <small>View project on</small>GitHub</a>
-      -->
-      </div>
-      <a href="https://github.com/bramp/js-sequence-diagrams">
-        <img class="gh-forkme" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub">
-      </a>
-    </header>
 
-    <div id="main">
 
-      <section id="demo">
-        <table align="center" class="inner">
-          <tr>
-            <td>
-            <h3>Demo. Try editing me below</h3>
-            <div class="editor-wrapper">
-              <div class="editor">Andrew->China: Says Hello
-Note right of China: China thinks\nabout it
-China-->Andrew: How are you?
-Andrew->>China: I am good thanks!</div>
-            </div>
-            Theme:
-            <select class="theme">
-              <option value="simple">Simple</option>
-              <option value="hand" selected>Hand drawn</option>
-            </select>
-            | <a href="#" class="download">Download as SVG</a>
-            </td>
-            <td class="diagram">This should be a diagram! If you don't see it you need Javascript enabled</td>
-          </tr>
-        </table>
+    <div id="main" class="row">
+        <div class="editor-wrapper">
+            <div class="editor">participant Adam as A
+participant Christy as C
 
-      </section>
+A->C: Says Hello
+Note right of C: Christy thinks\nabout it
+C-->A: How are you?
+A->>C: I am good thanks!</div>
+        </div>
 
-      <div class="inner">
-      <section id="info">
-        <h3>Intro</h3>
-        <p>A simple javascript library to turn text into vector <a href="http://en.wikipedia.org/wiki/Sequence_diagram">UML sequence diagrams</a>.
-          Heavily inspired by <a href="http://www.websequencediagrams.com/">websequencediagrams.com</a>, who offer a serverside solution. We use <a href="http://zaach.github.com/jison/">Jison</a> to parse the text, and <a href="http://snapsvg.io/">Snap.svg</a> to draw the image.</p>
-      </section>
-      <section id="examples">
-        <h3>Examples</h3>
-        <table>
-
-          <tr id="example1">
-            <td class="diagram"></td>
-            <td>
-              <div class="editor-wrapper">
-                <div class="editor">Title: Here is a title
-A->B: Normal line
-B-->C: Dashed line
-C->>D: Open arrow
-D-->>A: Dashed open arrow</div>
-              </div>
-              Theme:
-              <select class="theme">
-                <option value="simple">Simple</option>
-                <option value="hand" selected>Hand drawn</option>
-              </select>
-              | <a href="#" class="download">Download as SVG</a>
-            </td>
-          </tr>
-
-          <tr id="example2">
-            <td class="diagram"></td>
-            <td>
-              <div class="editor-wrapper">
-                <div class="editor"># Example of a comment.
-Note left of A: Note to the\n left of A
-Note right of A: Note to the\n right of A
-Note over A: Note over A
-Note over A,B: Note over both A and B</div>
-              </div>
-              Theme:
-              <select class="theme">
-                <option value="simple">Simple</option>
-                <option value="hand" selected>Hand drawn</option>
-              </select>
-              | <a href="#" class="download">Download as SVG</a>
-            </td>
-          </tr>
-
-          <tr id="example3">
-            <td class="diagram"></td>
-            <td>
-              <div class="editor-wrapper">
-                <div class="editor">participant C
-participant B
-participant A
-Note right of A: By listing the participants\n you can change their order</div>
-              </div>
-              Theme:
-              <select class="theme">
-                <option value="simple">Simple</option>
-                <option value="hand" selected>Hand drawn</option>
-              </select>
-              | <a href="#" class="download">Download as SVG</a>
-            </td>
-          </tr>
-
-        </table>
-      </section>
-      <section id="syntax">
-        <h3>Syntax</h3>
-        The following diagram shows the syntax for the diagrams. The exact grammar can be <a href="https://github.com/bramp/js-sequence-diagrams/blob/master/src/grammar.jison">found here</a> in bison format.<br /><br />
-        <div class="center"><img src="images/grammar.png"/></div>
-  <div class="right">
-    generated by <a name="Railroad-Diagram-Generator" class="signature" title="http://www.bottlecaps.de/rr/ui" href="http://www.bottlecaps.de/rr/ui">Railroad Diagram Generator</a>
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><g transform="scale(0.177777777777777778)"><circle cx="45" cy="45" r="45" style="stroke:none; fill:#FFCC00"></circle><circle cx="45" cy="45" r="42" style="stroke:#332900; stroke-width:2px; fill:#FFCC00"></circle><line x1="15" y1="15" x2="75" y2="75" stroke="#332900" style="stroke-width:9px;"></line><line x1="15" y1="75" x2="75" y2="15" stroke="#332900" style="stroke-width:9px;"></line><text x="7" y="54" style="font-size:26px; font-family:Arial, Sans-serif; font-weight:bold; fill: #332900">R</text><text x="64" y="54" style="font-size:26px; font-family:Arial, Sans-serif; font-weight:bold; fill: #332900">R</text></g></svg>
-  </div>
-      </section>
-      <section id="usage">
-        <h3>Usage</h3>
-        <p>js-sequence-diagrams depends on <a href="http://http://snapsvg.io/">Snap.svg</a> and <a href="http://underscorejs.org/">Underscore.js</a> (or <a href="http://lodash.com/">lodash</a>). You can download all these files manually, or use "<a href="http://bower.io/">bower</a> install bramp/js-sequence-diagrams".</p>
-        <p>
-
-        Then include the following HTML:
-        <pre>&lt;script src=&quot;<a href="js/webfont.js">webfont.js</a>&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;<a href="js/snap.svg-min.js">snap.svg-min.js</a>&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;<a href="js/underscore-min.js">underscore-min.js</a>&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;<a href="js/sequence-diagram-min.js">sequence-diagram-min.js</a>&quot;&gt;&lt;/script&gt;
-</pre>
-and now you have two options. You can manually parse the text:
-<pre>
-&lt;div id=&quot;diagram&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-  var diagram = Diagram.parse(&quot;A-&gt;B: Message&quot;);
-  diagram.drawSVG(&quot;diagram&quot;, {theme: &#39;hand&#39;});
-&lt;/script&gt;
-</pre>
-
-or use jQuery to do all the work:
-<pre>
-&lt;div class=&quot;diagram&quot;&gt;A-&gt;B: Message&lt;/div&gt;
-&lt;script&gt;
-$(&quot;.diagram&quot;).sequenceDiagram({theme: &#39;hand&#39;});
-&lt;/script&gt;
-</pre>
-
-</p>
-<p>More documentation is in the official <a href="https://github.com/bramp/js-sequence-diagrams/blob/master/README.md">README.md</a></p>
-
-      </section>
-      </div>
-
-    <footer>
-      <hr />
-      <div class="inner">
-        by <a href="https://bramp.net">Andrew Brampton</a> - <a href="https://github.com/bramp">github</a> - <a href="https://twitter.com/TheBramp">@TheBramp</a>
-      </div>
-    </footer>
-
+        <div id="diagram">
+          <div class="diagram">This should be a diagram! If you don't see it you need Javascript enabled</div>
+          <a href="#" class="download">Download as SVG</a>
+        </div>
+    </div>
+      
     <script src="js/jquery.min.js"></script>
 
     <!-- Needed for the text editor -->
@@ -211,8 +70,11 @@ $(&quot;.diagram&quot;).sequenceDiagram({theme: &#39;hand&#39;});
 
         // Setup the editor diagram
         var editor = ace.edit(editor_div.get(0));
-        editor.setTheme("ace/theme/crimson_editor");
+        // editor.setTheme("ace/theme/crimson_editor");
+        editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/asciidoc");
+        editor.session.setUseWrapMode(true);
+        editor.setFontSize(18);
         editor.getSession().on('change', _.debounce(on_change, 100));
 
         download_link.click(function(ev) {
@@ -240,7 +102,7 @@ $(&quot;.diagram&quot;).sequenceDiagram({theme: &#39;hand&#39;});
             diagram_div.html('');
 
             var options = {
-              theme: theme_div.val(),
+              theme: 'simple',
               scale: 1
             };
 
@@ -265,14 +127,7 @@ $(&quot;.diagram&quot;).sequenceDiagram({theme: &#39;hand&#39;});
       }
 
       $(document).ready(function() {
-        // Example diagrams
-        //$('.diagram').sequenceDiagram();
-
-        // Setup all the editors
-        setup_editor($('#demo'));
-        setup_editor($('#example1'));
-        setup_editor($('#example2'));
-        setup_editor($('#example3'));
+        setup_editor($('#main'));
       });
     </script>
   </body>
