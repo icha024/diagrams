@@ -62,15 +62,20 @@ A->>C: I am good thanks!</div>
     <script src="js/svginnerhtml.min.js"></script>
     <script type="text/javascript">
 
+      var editor;
       function setup_editor(div) {
-
+        var prevSavedData = window.localStorage.getItem('web-diagrams');
+        if (prevSavedData) {
+          console.debug('Resume saved value: ', prevSavedData)
+          document.querySelector(".editor").innerHTML = prevSavedData.replace(/\{NEWLINE\}/g, '\n');
+        }
         var editor_div = div.find(".editor");
         var diagram_div = div.find(".diagram");
         var theme_div = div.find(".theme");
         var download_link = div.find('.download');
 
         // Setup the editor diagram
-        var editor = ace.edit(editor_div.get(0));
+        editor = ace.edit(editor_div.get(0));
         // editor.setTheme("ace/theme/crimson_editor");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/asciidoc");
@@ -124,6 +129,16 @@ A->>C: I am good thanks!</div>
             editor.getSession().setAnnotations([annotation]);
             throw err;
           }
+        }
+
+      }
+      
+      onkeydown = function(e){
+        if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+          e.preventDefault();
+          var contentData = editor.getValue().replace(/\n/g, '{NEWLINE}');
+          console.debug('Saving data: ', contentData);
+          window.localStorage.setItem('web-diagrams', contentData);
         }
       }
 
