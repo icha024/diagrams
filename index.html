@@ -133,15 +133,23 @@ A->>C: I am good thanks!</div>
 
       }
       
+      function save() {
+        var contentData = editor.getValue().replace(/\n/g, '{NEWLINE}');
+        console.debug('Saving data: ', contentData);
+        window.localStorage.setItem('web-diagrams', contentData);
+      }
+
       onkeydown = function(e){
         if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
           e.preventDefault();
-          var contentData = editor.getValue().replace(/\n/g, '{NEWLINE}');
-          console.debug('Saving data: ', contentData);
-          window.localStorage.setItem('web-diagrams', contentData);
+          save();
         }
       }
 
+      onbeforeunload = function(e) {
+        save();
+      };
+      
       $(document).ready(function() {
         setup_editor($('#main'));
       });
